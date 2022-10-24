@@ -1,6 +1,11 @@
-<%- if controller_name != 'sessions' %>
-  こちらから<%= link_to "ログイン", new_session_path(resource_name) %>してください<br />
-<% end %>
+<div class ="row text-center">
+ <div class ="col">
+  <%- if controller_name != 'sessions' %>
+   <%= link_to "ログインはこちらから", new_session_path(resource_name) %><br />
+  <% end %>
+ </div>
+</div>
+
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
   <%= link_to "こちら", new_registration_path(resource_name) %><br />

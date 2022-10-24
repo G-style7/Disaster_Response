@@ -1,11 +1,10 @@
 <div class = "container">
-  <div class ="row">
-  <div class ="col">
-<h2>新規登録</h2>
+
+<h2 class= "mt-3" >新規登録</h2>
 
    <%= form_with model: @end_user,url: end_user_registration_path do |f| %>
    <%= render "public/shared/error_messages", resource: resource %>
-   <table class="table">
+   <table class="table mt-5">
     <tbody>
      <tr>
       <td><%= f.label :ニックネーム %></td>
@@ -13,21 +12,25 @@
      </tr>
      <tr>
       <td><%= f.label :名前 %></td>
-      <td><%= f.text_field :last_name, autofocus: true, placeholder: "姓", autocomplete: "last_name" %></td>
-      <td><%= f.text_field :first_name, autofocus: true, placeholder: "名", autocomplete: "first_name" %></td>
+      <td>
+       <%= f.text_field :last_name, autofocus: true, placeholder: "姓", autocomplete: "last_name" %>
+       <%= f.text_field :first_name, autofocus: true, placeholder: "名", autocomplete: "first_name" %>
+      </td>
      </tr>
      <tr>
       <td><%= f.label :フリガナ %></td>
-      <td><%= f.text_field :last_name_kana, autofocus: true,placeholder: "セイ", autocomplete: "last_name_kana" %></td>
-      <td><%= f.text_field :first_name_kana, autofocus: true,placeholder: "メイ", autocomplete: "first_name_kana" %></td>
+      <td>
+       <%= f.text_field :last_name_kana, autofocus: true,placeholder: "セイ", autocomplete: "last_name_kana" %>
+       <%= f.text_field :first_name_kana, autofocus: true,placeholder: "メイ", autocomplete: "first_name_kana" %>
+      </td>
      </tr>
      <tr>
       <td><%= f.label :生年月日 %></td>
-      <td><%= f.date_select :birth_date, use_month_numbers: true,start_year: 1930 ,autofocus: true, autocomplete: "birthday"%></td>
+      <td><%= f.date_select :birthday, use_month_numbers: true,start_year: 1930 ,autofocus: true, autocomplete: "birthday"%></td>
      </tr>
      <tr>
        <td><%= f.label :メールアドレス %></td>
-       <td><%= f.email_field :email, autofocus: true, placeholder: "sample@sample.ne.jp", autocomplete: "email" %></td>
+       <td><%= f.email_field :email, autofocus: true, placeholder: "sample@sample.ne.jp", autocomplete: "email" ,size: "40x40" %></td>
      </tr>
      <tr>
        <td><%= f.label :郵便番号 %></td>
@@ -51,16 +54,16 @@
        <td><%= f.label :パスワード（確認用）%></td>
        <td><%= f.password_field :password_confirmation,placeholder: "", autocomplete: "new-password" %></td>
      </tr>
-     <div class="col col-3">
+     <div class="d-grid gap-2 col-6 mx-auto">
+     <tr>
       <td></td>
-      <td><%= f.submit "新規登録" ,class: "btn btn-success btn-block" %></td>
+      <td><%= f.submit "新規登録" ,class: "btn btn-success btn-md w-50" %></td>
+      <td></td>
+     </tr>
      </div>
      <% end %>
     </tbody>
    </table>
-  <div class = "col-4 text-left mt-3">
-   <h3>既に登録済みの方</h3>
-  </div>
 
   <%= render "public/shared/links" %>
 
