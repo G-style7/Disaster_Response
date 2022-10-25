@@ -1,0 +1,7 @@
+ ja:
+    enums:
+      end_user:
+        gender:
+          man: "男性"
+        　woman: "女性"
+        　unanswered: "未回答"

@@ -7,4 +7,6 @@ class EndUser < ApplicationRecord
   has_many :post_images, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :helps, dependent: :destroy
+  
+  enum gender: { man: 0, woman: 1, other: 2 }
 end
