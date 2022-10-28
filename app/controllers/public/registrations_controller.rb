@@ -4,7 +4,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters
 
   def after_sign_up_path_for(resource)
-    end_user_my_page_path #顧客のログイン後はマイページに遷移するため（顧客のshowページへ）
+    end_users_my_page_path #利用者のログイン後はマイページに遷移するため（利用者のshowページへ）
   end
 
   protected

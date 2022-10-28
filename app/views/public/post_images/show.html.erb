@@ -1,2 +1,13 @@
-<h1>Public::PostImages#show</h1>
-<p>Find me in app/views/public/post_images/show.html.erb</p>
+<div class ="container">
+  <div class ="row justify-content-center">
+    <div class ="col mt-3">
+     <p>タイトル：<%= @post_image.title %></p>
+      <%= image_tag @post_image.get_image(300,300) %>
+     <p>投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+     <p>説明：<%= @post_image.introduction %></p>
+       <% if @post_image.end_user == current_end_user %>
+        <%= link_to "削除", post_image_path(@post_image), method: :delete %>
+       <% end %>
+    </div>
+</div>
+</div>
