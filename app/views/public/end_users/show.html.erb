@@ -1,19 +1,23 @@
 <div class = "container">
    <div class = "row">
-    <div class ="col-2 bg-secondary">
+    <div class ="col-2">
      <h2 class = "content text-center mt-2">マイページ</h2>
     </div>
    </div>
-  <div class = "row mt-3">
-    <h4>登録情報</h4>
-    <div class = "col ml-5">
+  <div class = "row mt-3 justify-content-center">
+    <h4>登録情報一覧</h4>
+    <div class = "col-8 ml-5">
     <%= link_to "編集する" ,end_users_information_edit_path ,class: "btn btn-success" %>
    </div>
   </div>
-   <div class ="row mt-3">
+   <div class ="row mt-3 justify-content-center">
     <div class ="col-8">
      <table class = "table table-bordered text-left" >
       <tbody>
+       <tr>
+         <td><%= "ニックネーム" %></td>
+         <td><%= @end_user.nickname %></td>
+       </tr>
        <tr>
          <td><%= "氏名" %></td>
          <td><%= @end_user.full_name %></td>
@@ -21,6 +25,18 @@
        <tr>
          <td><%= "カナ" %></td>
          <td><%= @end_user.full_name_kana %></td>
+       </tr>
+       <tr>
+         <td><%= "性別" %></td>
+         <td><%= t("enums.end_user.gender.#{@end_user.gender}") %></td>
+       </tr>
+       <tr>
+         <td><%= "生年月日" %></td>
+         <td><%= @end_user.birthday %></td>
+       </tr>
+       <tr>
+         <td><%= "メールアドレス" %></td>
+         <td><%= @end_user.email %></td>
        </tr>
        <tr>
          <td><%= "郵便番号" %></td>
@@ -34,20 +50,13 @@
          <td><%= "電話番号" %></td>
          <td><%= @end_user.telephone_number %></td>
        </tr>
-       <tr>
-         <td><%= "メールアドレス" %></td>
-         <td><%= @end_user.email %></td>
-       </tr>
       </tbody>
      </table>
     </div>
    </div>
     <div class = "row">
-     <div class="col-2">
-      <h3>配送先</h3>
-     </div>
      <div class = "col-3">
-      <%= link_to "一覧を見る" ,post_images_path ,class: "btn btn-primary" %>
+      <%= link_to "投稿一覧を見る" ,post_images_path ,class: "btn btn-primary" %>
      </div>
     </div>
  </div>

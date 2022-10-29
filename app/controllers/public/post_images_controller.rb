@@ -11,7 +11,7 @@ class Public::PostImagesController < ApplicationController
   end
 
   def index
-    @post_images = PostImage.all
+    @post_images = current_end_user.post_images
   end
 
   def show

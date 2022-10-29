@@ -1,2 +1,28 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class ="container">
+ <div class ="row mt-5">
+     <table class = "table">
+      <thead>
+       <tr>
+        <th>被害画像</th>
+        <th>投稿日時</th>
+        <th>タイトル</th>
+        <th>台風種別</th>
+        <th>場　所</th>
+       </tr>
+      </thead>
+      <tbody>
+    <% @post_images.each do |post_image| %>
+      <tr>
+       <td>
+        <%= link_to post_image_path(post_image.id) do %> <%#詳細ページへ遷移したい %>
+         <%= image_tag post_image.get_image(500,500) %>
+        <% end %>
+       </td>
+       <td class="align-middle"><%= post_image.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+       <td class="align-middle"><%= post_image.title %></td>
+       <td class="align-middle"><%= post_image.kind %></td>
+       <td class="align-middle"><%= post_image.address %></td>
+      </tr>
+    <% end %>
+ </div>
+</div>
