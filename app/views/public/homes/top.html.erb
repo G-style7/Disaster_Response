@@ -3,6 +3,7 @@
      <table class = "table">
       <thead>
        <tr>
+        <th>投稿者</th>
         <th>被害画像</th>
         <th>投稿日時</th>
         <th>タイトル</th>
@@ -13,6 +14,7 @@
       <tbody>
     <% @post_images.each do |post_image| %>
       <tr>
+       <td></td>
        <td>
         <%= link_to post_image_path(post_image.id) do %> <%#詳細ページへ遷移したい %>
          <%= image_tag post_image.get_image(500,500) %>

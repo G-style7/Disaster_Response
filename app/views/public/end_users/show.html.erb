@@ -7,7 +7,9 @@
   <div class = "row mt-3 justify-content-center">
     <h4>登録情報一覧</h4>
     <div class = "col-8 ml-5">
-    <%= link_to "編集する" ,end_users_information_edit_path ,class: "btn btn-success" %>
+     <% if @end_user == current_end_user %>
+      <%= link_to "編集する" ,end_users_information_edit_path(@end_user) ,class: "btn btn-success" %>
+     <% end %>
    </div>
   </div>
    <div class ="row mt-3 justify-content-center">

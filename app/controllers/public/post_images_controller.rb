@@ -16,6 +16,8 @@ class Public::PostImagesController < ApplicationController
 
   def show
     @post_image = PostImage.find(params[:id])
+    #@latitude =
+    #@longitude =
   end
 
   def destroy
@@ -25,6 +27,13 @@ class Public::PostImagesController < ApplicationController
   end
 
   def edit
+    @post_image = PostImage.find(params[:id])
+  end
+
+  def update
+    @post_image = PostImage.find(params[:id])
+    @post_image.update(post_image_params)
+    redirect_to post_image_path
   end
 
    private
