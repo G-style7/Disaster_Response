@@ -8,6 +8,7 @@
         <th>タイトル</th>
         <th>台風種別</th>
         <th>場　所</th>
+        <th>コメント</th>
        </tr>
       </thead>
       <tbody>
@@ -22,6 +23,7 @@
        <td class="align-middle"><%= post_image.title %></td>
        <td class="align-middle"><%= post_image.kind %></td>
        <td class="align-middle"><%= post_image.address %></td>
+       <td class="align-middle"><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %></td>
       </tr>
     <% end %>
  </div>

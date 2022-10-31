@@ -33,9 +33,10 @@ patch 'end_users/information' => 'end_users#update' #利用者の登録情報更
 get '/end_users/unsubscribe' => 'end_users#unsubscribe' #利用者の退会確認画面
 patch '/end_users/withdraw' => 'end_users#withdraw' #利用者の退会処理(ステータスの更新)
 
-resources :post_images
-resource :post_comments ,only:[:create, :destroy]
+resources :post_images do
 resource :helps ,only:[:create, :destroy]
+resources :post_comments ,only:[:create, :destroy]
+end
 
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
