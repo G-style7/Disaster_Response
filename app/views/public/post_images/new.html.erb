@@ -17,6 +17,9 @@
       <div class "col">
          <h4>住所</h4>
           <%= f.text_field :address, placeholder: "発生場所の住所",size: "30x5" %>
+          <%= f.hidden_field :latitude %>
+          <%= f.hidden_field :longitude %>
+
 
          <h4 class ="mt-3">画像</h4>
           <%= f.file_field :image, accept: "image/*" %>
@@ -39,3 +42,62 @@
      </div>
      <% end %>
 </div>
+
+<ul>
+  <li>lat: <span id="lat"></span></li>
+  <li>lng: <span id="lng"></span></li>
+</ul>
+
+<script type="text/javascript">
+  function initMap() {
+    // latitude,longitudeから位置を特定marker.sermap()
+    var test = {lat: 35.6895014, lng: 139.6917337};
+    var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 15,
+              center: test
+              });
+    var transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
+
+    var contentString = '住所：<%= @post_image.address %>';
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+    var marker
+
+    map.addListener('click', (e) => {
+      if (marker) {
+        marker.setMap(null)
+      }
+      var latitude = e.latLng.lat()
+      var longitude = e.latLng.lng()
+      document.getElementById('lat').textContent = latitude
+      document.getElementById('post_image_latitude').value = latitude
+      document.getElementById('lng').textContent = longitude
+      document.getElementById('post_image_longitude').value = longitude
+
+      test.lat = latitude
+      test.lng = longitude
+
+      marker = new google.maps.Marker({
+                    position:test,
+                    map: map,
+                    title: contentString
+                   });
+
+       marker.addListener('click', function() {
+         infowindow.open(map, marker);
+       });
+    })
+  }
+</script>
+<script async defer
+              src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%=ENV["GOOGLE_MAP_API"]%>&callback=initMap">
+</script>
+<style type="text/css">
+  #map { height: 400px;
+         width: 70%;}
+</style>
+<!--mapの表示-->
+<div id="map"></div>

@@ -26,6 +26,8 @@
        <td class="align-middle"><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %></td>
       </tr>
     <% end %>
+    </table>
+    <%= paginate @post_images %>
  </div>
 </div>
  <%#= post_image.end_user.nickname %>

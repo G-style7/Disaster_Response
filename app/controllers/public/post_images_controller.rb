@@ -6,15 +6,16 @@ class Public::PostImagesController < ApplicationController
   def create
     @post_image = PostImage.new(post_image_params)
     @post_image.end_user_id = current_end_user.id
+    @post_image.address = Geocoder.search([@post_image.latitude, @post_image.longitude]).first.address
     if @post_image.save
-    redirect_to post_images_path
+      redirect_to post_images_path
     else
-    render :new
+      render :new
     end
   end
 
   def index
-    @post_images = current_end_user.post_images
+    @post_images = current_end_user.post_images.page(params[:page])
   end
 
   def show
@@ -43,6 +44,6 @@ class Public::PostImagesController < ApplicationController
    private
 
   def post_image_params
-    params.require(:post_image).permit(:title, :kind, :introduction, :address, :latitude, :longitude)
+    params.require(:post_image).permit(:title, :kind, :introduction, :address, :latitude, :longitude, :image)
   end
 end
