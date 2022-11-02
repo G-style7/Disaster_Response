@@ -6,7 +6,7 @@
         <th>被害画像</th>
         <th>投稿日時</th>
         <th>タイトル</th>
-        <th>台風種別</th>
+        <th>災害種別</th>
         <th>場　所</th>
         <th>コメント</th>
        </tr>
@@ -23,11 +23,14 @@
        <td class="align-middle"><%= post_image.title %></td>
        <td class="align-middle"><%= post_image.kind %></td>
        <td class="align-middle"><%= post_image.address %></td>
-       <td class="align-middle"><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %></td>
+       <td class="align-middle"><%= link_to "#{post_image.post_comments.count} 件", post_image_path(post_image.id) %></td>
       </tr>
     <% end %>
-    </table>
-    <%= paginate @post_images %>
+      </tbody>
+     </table>
+ </div>
+ <div class= "pagination">
+  <%= paginate @post_images %>
  </div>
 </div>
  <%#= post_image.end_user.nickname %>

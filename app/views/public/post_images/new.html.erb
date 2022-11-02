@@ -20,29 +20,6 @@
           <%= f.hidden_field :latitude %>
           <%= f.hidden_field :longitude %>
 
-
-         <h4 class ="mt-3">画像</h4>
-          <%= f.file_field :image, accept: "image/*" %>
-
-         <h4 class ="mt-3">タイトル</h4>
-          <%= f.text_field :title ,size: "40x10" %>
-
-         <h4 class ="mt-3">種別</h4>
-          <%= f.select :kind , ApplicationController::DISASTER_ARRAY, include_blank: '選択してください' %>
-
-         <h4 class ="mt-3">説明</h4>
-          <%= f.text_area :introduction ,size: "80x5" %>
-
-         <div class = "row">
-          <div class = "col text-center">
-           <%= f.submit '投稿',class: "btn btn-info btn-md w-30" %>
-          </div>
-         </div>
-      </div>
-     </div>
-     <% end %>
-</div>
-
 <ul>
   <li>lat: <span id="lat"></span></li>
   <li>lng: <span id="lng"></span></li>
@@ -101,3 +78,26 @@
 </style>
 <!--mapの表示-->
 <div id="map"></div>
+
+
+         <h4 class ="mt-3">画像</h4>
+          <%= f.file_field :image, accept: "image/*" %>
+
+         <h4 class ="mt-3">タイトル</h4>
+          <%= f.text_field :title ,size: "40x10" %>
+
+         <h4 class ="mt-3">種別</h4>
+          <%= f.select :kind , ApplicationController::DISASTER_ARRAY, include_blank: '選択してください' %>
+
+         <h4 class ="mt-3">説明</h4>
+          <%= f.text_area :introduction ,size: "80x5" %>
+
+         <div class = "row">
+          <div class = "col text-center">
+           <%= f.submit '投稿',class: "btn btn-info btn-md w-30" %>
+          </div>
+         </div>
+      </div>
+     </div>
+     <% end %>
+</div>

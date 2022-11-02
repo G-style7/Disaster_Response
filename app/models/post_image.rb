@@ -2,11 +2,8 @@ class PostImage < ApplicationRecord
   DISASTER_ARRAY = ["地震","津波","風水害(台風、洪水)","竜巻","火山爆発、火砕流","干ばつ","その他"]
   validates :kind ,inclusion: { in: DISASTER_ARRAY }
 
-  #titleが存在しているかを確認するバリデーション
-  validates :title, presence: true
-  validates :kind, presence: true
-  validates :introduction, presence: true
-  validates :address, presence: true
+  #titleなどが存在しているかを確認するバリデーション
+  validates :title,:kind,:introduction,:address,:image, presence: true
 
   has_one_attached :image
 

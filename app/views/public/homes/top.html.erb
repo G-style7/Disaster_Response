@@ -3,21 +3,19 @@
      <table class = "table">
       <thead>
        <tr>
-        <th>投稿者</th>
         <th>被害画像</th>
         <th>投稿日時</th>
         <th>タイトル</th>
-        <th>台風種別</th>
+        <th>災害種別</th>
         <th>場　所</th>
        </tr>
       </thead>
       <tbody>
     <% @post_images.each do |post_image| %>
       <tr>
-       <td></td>
        <td>
         <%= link_to post_image_path(post_image.id) do %> <%#詳細ページへ遷移したい %>
-         <%= image_tag post_image.get_image(500,500) %>
+         <%= image_tag post_image.get_image(300,300) %>
         <% end %>
        </td>
        <td class="align-middle"><%= post_image.created_at.strftime('%Y/%m/%d %H:%M') %></td>
@@ -26,8 +24,10 @@
        <td class="align-middle"><%= post_image.address %></td>
       </tr>
     <% end %>
+      </tbody>
+     </table>
  </div>
- <div class ="row">
+ <div class ="pagination">
  <%= paginate @post_images %>
  </div>
 </div>

@@ -5,9 +5,6 @@
       <%= image_tag @post_image.get_image(300,300) %>
      <p>投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d %H:%M') %></p>
      <p>説明：<%= @post_image.introduction %></p>
-       <% if @post_image.end_user == current_end_user %>
-        <%= link_to "削除", post_image_path(@post_image), method: :delete %>
-       <% end %>
     </div>
 </div>
 <h4>詳細場所</h4>
@@ -49,6 +46,15 @@
 <!--mapの表示-->
 <div id="map"></div>
 
+<div class ="row">
+ <div class ="col">
+  <% if @post_image.end_user == current_end_user %>
+        <%= link_to "編集", edit_post_image_path(@post_image)%>
+        <%= link_to "削除", post_image_path(@post_image), method: :delete %>
+  <% end %>
+ </div>
+</div>
+
 <div class = "row mt-3">
   <div class ="col">
   <p>コメント数：<%= @post_image.post_comments.count %>件</p>
@@ -75,6 +81,7 @@
   <% end %>
 </div>
 </div>
+
 <div class = "row mt-3">
  <div class ="col">
   <%= form_with model: [@post_image, @post_comment] do |f| %>
