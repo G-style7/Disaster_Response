@@ -10,28 +10,30 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-   <body>
+  <body>
   <header class= "navi">
+   <nav class = "navbar navbar-dark bg-light fixed-top "> <%# ヘッダー全ての色 %>
+   <!-- ハンバーガーメニュー -->
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
     <% if admin_signed_in? %>
-     <nav class = "navbar navbar-dark bg-light "> <%# ヘッダー全ての色 %>
-      <div class = "container">
+
+     <div class = "container">
        <%= link_to "resQ" ,admin_root_path ,class: "" %>
-        <div class = "row">
-         <div class = "col ">
-          <%= link_to "投稿一覧", admin_post_images_path , class: "" %>
-          <%= link_to "利用者一覧", admin_end_user_path , class: "" %>
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "" %>
-         <div class ="input-group col-6 ml-auto mt-3"> <%# なぜautoだと右よせになる？ %>
-           <input type = "text" id="txt-search" class= "form-control input-group-append " placeholder="Search" ></input>
-          <span class ="input-group-btn input-group-append">
-           <submit type = "submit" id ="btn-search" class="btn btn-primary"><i class ="fas fa-search"></i></submit>
-          </span>
-         </div>
-        </div>
-      </div>
-     </nav>
+          <ul>
+           <form class="d-flex">
+            <li><input class="form-control me-2" type="search" placeholder="キーワード検索" aria-label="Search" size = "30*30" ></li>
+            <li><button class="btn btn-outline-success" type="submit">検索</button></li>
+           </form>
+          </ul>
+          <ul>
+            <li><%= link_to "投稿一覧", admin_post_images_path , class: "" %></li>
+            <li><%= link_to "利用者一覧", admin_end_users_path , class: "" %></li>
+            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "" %></li>
+          </ul>
+       </div>
     <% elsif end_user_signed_in? %>
-     <nav class = "navbar navbar-dark bg-light "> <%# ヘッダー全ての色 %>
       <div class = "container">
        <%= link_to "resQ" ,root_path ,class: "" %>
           <ul>
@@ -46,10 +48,8 @@
             <li><i class="fa-solid fa-user mr-1"></i><%= link_to "投稿一覧", post_images_path, class: "" %></li>
             <li><i class="fa-solid fa-lock mr-1"></i><%= link_to "ログアウト" , destroy_end_user_session_path, method: :delete, class: "" %></li>
           </ul>
-        </div>
-     </nav>
+      </div>
     <% else %>
-     <nav class = "navbar navbar-dark bg-light "> <%# ヘッダー全ての色 %>
        <div class = "container">
         <%= link_to "resQ" ,root_path ,class: "" %>
           <ul>
@@ -68,6 +68,5 @@
     <% end %>
   </header>
     <%= yield %>
-
-  </body>
+ </body>
 </html>

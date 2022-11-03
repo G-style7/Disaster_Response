@@ -1,2 +1,78 @@
-<h1>Admin::EndUsers#edit</h1>
-<p>Find me in app/views/admin/end_users/edit.html.erb</p>
+<div class = "container">
+ <div class = "row mt-3">
+  <div class ="col-5">
+   <h2><%= @end_user.full_name %>さんの会員情報編集</h2>
+  </div>
+ </div>
+
+   <div class = "row mt-5 justify-content-center" >
+    <div class = "col-10" >
+     <table class = "table">
+         <%= form_with model: @end_user, url: admin_end_user_path(@end_user.id), method: :patch do |f| %>
+       <tr>
+        <td><%= f.label "会員ID" %></td>
+        <td><%= @end_user.id %></td>
+       </tr>
+        <tr>
+        <td><%= f.label "ニックネーム" %></td>
+        <td><%= f.text_field :nickname ,class: "form-control" %></td>
+       </tr>
+       <tr>
+        <td><%= f.label "氏名" %></td>
+        <td><%= f.text_field :last_name ,class: "form-control" %></td>
+        <td><%= f.text_field :first_name ,class: "form-control" %></td>
+       </tr>
+       <tr>
+        <td><%= f.label "カナ" %></td>
+        <td><%= f.text_field :last_name_kana ,class: "form-control" %></td>
+        <td><%= f.text_field :first_name_kana ,class: "form-control" %></td>
+       </tr>
+       <tr>
+        <td><%= f.label "性別" %></td>
+        <td>
+         <%= f.radio_button :gender, "man" %>
+         <%= f.label :gender, "男性" %>
+         <%= f.radio_button :gender, "woman" %>
+         <%= f.label :gender, "女性" %>
+         <%= f.radio_button :gender, "unanswered" %>
+         <%= f.label :gender, "未回答" %>
+        </td>
+       </tr>
+       <tr>
+        <td><%= f.label "生年月日" %></td>
+        <td><%= f.date_select :birthday, use_month_numbers: true,start_year: 1930 ,autofocus: true,include_blank: true, autocomplete: "birthday" %></td>
+       </tr>
+       <tr>
+        <td><%= f.label "メールアドレス" %></td>
+        <td><%= f.text_field :email ,class: "form-control" %></td>
+       </tr>
+       <tr>
+        <td><%= f.label "郵便番号" %></td>
+        <td><%= f.text_field :postal_code ,class: "form-control" %></td>
+       </tr>
+       <tr>
+        <td><%= f.label "住所" %></td>
+        <td><%= f.text_field :address ,class: "form-control" %></td>
+       </tr>
+       <tr>
+        <td><%= f.label "電話番号" %></td>
+        <td><%= f.text_field :telephone_number ,class: "form-control" %></td>
+       </tr>
+       <tr>
+        <td><%= f.label "会員ステータス" %></td>
+        <td>
+        <%= f.label '退会' %>
+        <%= f.radio_button :is_deleted, true %>
+        <%= f.label "is_deleted",'有効', value: false %> <%# 47,50は同じ意味 %>
+        <%= f.radio_button :is_deleted, false %>
+        </td>
+       </tr>
+       <tr>
+        <td></td>
+        <td><%= f.submit "編集内容を保存" ,class: "mt-3 btn btn-success" %></td>
+       </tr>
+      </table>
+      <% end %>
+    </div>
+   </div>
+  </div>

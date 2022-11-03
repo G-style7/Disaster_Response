@@ -2,7 +2,7 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  before_action :authenticate_end_user!
+  before_action :authenticate_end_user! #ログインしていない場合トップページのみ許可している
   before_action :end_user_state, only: [:create]
 
   def after_sign_in_path_for(resource) # topページへ遷移
