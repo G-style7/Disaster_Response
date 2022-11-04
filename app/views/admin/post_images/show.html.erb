@@ -46,22 +46,20 @@
 <!--mapの表示-->
 <div id="map"></div>
 
-<div class ="row">
  <div class ="col">
-        <%= link_to "削除", admin_post_image_path(@post_image), method: :delete %>
+        <%= link_to "削除", admin_post_image_path(@post_image), method: :delete, data: { confirm: '削除しますか？' } %>
  </div>
-</div>
 
-<div class = "row mt-3">
-  <div class ="col">
-    <p>コメント数：<%= @post_image.post_comments.count %>件</p>
+  <div class ="row justify-content-center">
+    <div class ="col">
+    <p>コメント：<%= @post_image.post_comments.count %>件</p>
     <% @post_image.post_comments.each do |post_comment| %>
-      <p><%#= image_tag post_comment.end_user.get_profile_image(100,100) %></p>
-      <%= post_comment.end_user.nickname %>
-      <%= post_comment.created_at.strftime('%Y/%m/%d/%H:%M') %><%= post_comment.comment %>
-     <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete %>
+      <%= post_comment.end_user.nickname %><br>
+      <%= post_comment.created_at.strftime('%Y/%m/%d/%H:%M') %><br>
+      <%= post_comment.comment %><br>
+     <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete, data: { confirm: '削除しますか？' } %><br>
     <% end %>
   </div>
-</div>
+  </div>
 </div>
 
