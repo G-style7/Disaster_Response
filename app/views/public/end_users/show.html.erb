@@ -7,6 +7,9 @@
      <table class = "table table-bordered text-left" >
       <tbody>
        <tr>
+        <td><%= image_tag @end_user.get_profile_image(100,100) %></td>
+       </tr>
+       <tr>
          <td><%= "ニックネーム" %></td>
          <td><%= @end_user.nickname %></td>
        </tr>
