@@ -1,6 +1,10 @@
 class Admin::PostImagesController < ApplicationController
   def index
-    @post_images = PostImage.page(params[:page])
+    if params[:end_user_id]
+      @post_images = PostImage.where(end_user_id: params[:end_user_id]).page(params[:page])
+    else
+      @post_images = PostImage.page(params[:page])
+    end
   end
 
   def show

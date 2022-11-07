@@ -1,5 +1,5 @@
-<div class = "container">
- <div class = "row justify-content-center">
+<div class = "container main">
+ <div class = "row toprow justify-content-center">
    <h3><%= @end_user.full_name %>さんの会員詳細</h3>
  </div>
    <div class = "row offset-2">
@@ -57,7 +57,7 @@
         </tr>
         <tr>
          <td><%= link_to "編集する" , edit_admin_end_user_path(@end_user.id) ,class: "btn btn-success",data: { confirm: '編集しますか？' }  %></td>
-         <td><%= link_to "投稿履歴一覧を見る" , admin_post_images_path ,class: "btn btn-primary" %></td>
+         <td><%= link_to "投稿履歴一覧を見る" , admin_post_images_path(end_user_id: @end_user.id)  ,class: "btn btn-primary" %></td>
         </tr>
       </table>
      </div>
