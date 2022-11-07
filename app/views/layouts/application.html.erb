@@ -12,82 +12,155 @@
 
   <body>
   <header class= "navi">
-   <nav class = "navbar navbar-dark bg-light fixed-top "> <%# ヘッダー全ての色 %>
+   <nav class = "navbar navbar-expand-lg bg-light fixed-top "> <%# ヘッダー全ての色 %>
+
     <% if admin_signed_in? %>
      <div class = "container">
        <h3><%= link_to "resQ" ,admin_root_path ,class: "fontsize" %></h3>
           <ul>
            <form class="d-flex">
-            <li><input class="form-control me-2" type="search" placeholder="キーワード検索" aria-label="Search" size = "30*30" ></li>
-            <li><button class="btn btn-outline-success" type="submit">検索</button></li>
+            <li>
+             <input class="form-control me-2" type="search" placeholder="キーワード検索" aria-label="Search" size = "30*30" >
+            </li>
+            <li>
+             <button class="btn btn-outline-success" type="submit">検索</button>
+            </li>
            </form>
           </ul>
-          <ul>
-            <li><%= link_to "投稿一覧", admin_post_images_path , class: "" %></li>
-            <li><%= link_to "利用者一覧", admin_end_users_path , class: "" %></li>
-            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "" %></li>
-          </ul>
-       </div>
-
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+           <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+             <i class="fa-solid fa-image mr-1"></i>
+             <%= link_to "投稿一覧", admin_post_images_path , class: "" %>
+            </li>
+            <li class="nav-item">
+             <i class="fa-solid fa-user mr-1"></i>
+             <%= link_to "利用者一覧", admin_end_users_path , class: "" %>
+            </li>
+            <li class="nav-item">
+                <i class="fa-solid fa-lock mr-1"></i>
+             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "" %>
+            </li>
+           </ul>
+          </div>
+     </div>
     <% elsif end_user_signed_in? %>
       <div class = "container">
-       <%= link_to "resQ" ,root_path ,class: "" %>
+       <h3><%= link_to "resQ" ,root_path ,class: "" %></h3>
           <ul>
            <form class="d-flex">
-            <li><input class="form-control me-2" type="search" placeholder="キーワード検索" aria-label="Search" size = "30*30" ></li>
-            <li><button class="btn btn-outline-success" type="submit">検索</button></li>
+            <li>
+             <input class="form-control me-2" type="search" placeholder="キーワード検索" aria-label="Search" size = "30*30" >
+            </li>
+            <li>
+             <button class="btn btn-outline-success" type="submit">検索</button>
+            </li>
            </form>
           </ul>
-          <ul>
-            <li><i class="fa-solid fa-image mr-1"></i><%= link_to "新規投稿", new_post_image_path, class: "" %></li>
-            <li><i class="fa-solid fa-image mr-1"></i><%= link_to "マイページ", end_users_my_page_path(current_end_user.id), class: "" %></li>
-            <li><i class="fa-solid fa-user mr-1"></i><%= link_to "投稿一覧", post_images_path, class: "" %></li>
-            <li><i class="fa-solid fa-lock mr-1"></i><%= link_to "ログアウト" , destroy_end_user_session_path, method: :delete, class: "" %></li>
-          </ul>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+           <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+             <i class="fa-solid fa-image mr-1"></i>
+             <%= link_to "新規投稿", new_post_image_path, class: "" %>
+            </li>
+            <li class="nav-item">
+             <i class="fa-solid fa-image mr-1"></i>
+             <%= link_to "マイページ", end_users_my_page_path(current_end_user.id), class: "" %>
+            </li>
+            <li class="nav-item">
+             <i class="fa-solid fa-user mr-1"></i>
+             <%= link_to "投稿一覧", post_images_path, class: "" %>
+            </li>
+            <li class="nav-item">
+             <i class="fa-solid fa-lock mr-1"></i>
+             <%= link_to "ログアウト" , destroy_end_user_session_path, method: :delete, class: "" %>
+            </li>
+           </ul>
+          </div>
       </div>
     <% else %>
        <div class = "container">
-        <%= link_to "resQ" ,root_path ,class: "" %>
+        <h3><%= link_to "resQ" ,root_path ,class: "" %></h3>
           <ul>
            <form class="d-flex">
-            <li><input class="form-control me-2" type="search" placeholder="キーワード検索" aria-label="Search" size = "30*30" ></li>
-            <li><button class="btn btn-outline-success" type="submit">検索</button></li>
+            <li>
+             <input class="form-control me-2" type="search" placeholder="キーワード検索" aria-label="Search" size = "30*30" >
+            </li>
+            <li>
+             <button class="btn btn-outline-success" type="submit">検索</button>
+            </li>
            </form>
           </ul>
-          <ul>
-            <li><i class="fa-solid fa-image mr-1"></i><%= link_to "投稿一覧" , post_images_path , class: "" %></li>
-            <li><i class="fa-solid fa-user mr-1"></i><%= link_to "新規登録" , new_end_user_registration_path , class: "" %></li>
-            <li><i class="fa-solid fa-lock mr-1"></i><%= link_to "ログイン" , new_end_user_session_path , class: "" %></li>
-          </ul>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+           <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+             <i class="fa-solid fa-image mr-1"></i>
+             <%= link_to "投稿一覧" , post_images_path , class: "" %>
+            </li>
+            <li class="nav-item">
+             <i class="fa-solid fa-user mr-1"></i>
+             <%= link_to "新規登録" , new_end_user_registration_path , class: "" %>
+             </li>
+            <li class="nav-item">
+             <i class="fa-solid fa-lock mr-1"></i>
+             <%= link_to "ログイン" , new_end_user_session_path , class: "" %>
+             </li>
+           </ul>
+          </div>
        </div>
      </nav>
     <% end %>
   </header>
     <%= yield %>
 
-  <footer class="bg-dark text-center text-white">
+  <footer class="bg-dark text-white expand-lg">
   <!-- Grid container -->
-  <div class="container p-4 pb-0">
+  <div class="container">
+   <div class="row">
    <h3><%= link_to "resQ" ,admin_root_path ,class: "" %></h3>
+   </div>
+   <div class ="row">
+     <div class="col-4">
+      <h5 class="text-center">命を救うために</h5>
+     </div>
+     <div class ="col-4">
+      <ul class="p-0 list-unstyled justify-content-center">
+        <li>
+          <a class="text-white-50"><%= link_to "利用規約" ,admin_root_path ,class: "text-white-50" %></a>
+        </li>
+        <li>
+          <a href="" title="License informations" class="text-white-50">プライバシーポリシー</a>
+        </li>
+      </ul>
+     </div>
     <!-- Section: Social media -->
-    <section class="mb-4">
+    <section class="col-4 mb-4 text-right">
       <!-- Facebook -->
       <!--<i class="fa-facebook-f"><%#= link_to "http://twitter.com/share?" ,class: "btn btn-outline-light btn-floating m-1" %></i>-->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-facebook-f"></i
-      ></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+       <i class="fab fa-facebook-f"></i>
+      </a>
       <!-- Twitter -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-twitter"></i
-      ></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+       <i class="fab fa-twitter"></i>
+      </a>
       <!-- Instagram -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-instagram"></i
-      ></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+       <i class="fab fa-instagram"></i>
+      </a>
       <!-- Github -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-github"></i
-      ></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+       <i class="fab fa-github"></i>
+      </a>
     </section>
     <!-- Section: Social media -->
   </div>
@@ -95,8 +168,7 @@
 
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2022 Copyright
-    <a class="text-white" href="https://mdbootstrap.com/">G-style</a>
+    © 2022 Copyright G-style
   </div>
   <!-- Copyright -->
 </footer>
