@@ -1,5 +1,5 @@
-<div class = "container">
-  <div class = "row justify-content-center">
+<div class = "container main">
+  <div class = "row toprow justify-content-center">
     <h3>登録情報一覧</h3>
   </div>
    <div class ="row justify-content-center">
@@ -7,6 +7,7 @@
      <table class = "table table-bordered text-left" >
       <tbody>
        <tr>
+        <td><%= "プロフィール画像" %></td>
         <td><%= image_tag @end_user.get_profile_image(100,100) %></td>
        </tr>
        <tr>

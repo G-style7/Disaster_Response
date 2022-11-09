@@ -8,6 +8,8 @@ devise_for :admin,skip: [:registrations, :passwords] ,controllers: {
 
 namespace :admin do
 root to: 'homes#top'
+get '/tos' => 'homes#tos' #利用規約
+get '/policy' => 'homes#policy' #プライバシーポリシー
 
 resources :post_images ,only:[:index, :show, :destroy]
 resources :post_comments ,only:[:destroy]

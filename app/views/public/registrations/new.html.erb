@@ -7,6 +7,9 @@
    <table class="table mt-5">
     <tbody>
      <tr>
+      <td><%= image_tag @end_user.get_profile_image(100,100) %></td>
+     </tr>
+     <tr>
       <td><%= f.label "ニックネーム" %></td>
       <td><%= f.text_field :nickname, autofocus: true, placeholder: "任意のニックネーム", autocomplete: "last_name" %></td>
      </tr>
