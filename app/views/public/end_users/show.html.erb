@@ -54,6 +54,9 @@
     <div class ="col-2">
       <%= link_to "投稿一覧を見る" ,post_images_path ,class: "btn btn-primary" %>
     </div>
+      <div class ="col-2">
+      <%= link_to "helps" ,end_users_helps_path ,class: "btn btn-primary" %>
+    </div>
     <div class ="col-2">
      <% if @end_user == current_end_user %>
       <%= link_to "編集する" ,end_users_information_edit_path(@end_user) ,class: "btn btn-success btn-block " %>

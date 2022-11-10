@@ -7,6 +7,10 @@ class Public::EndUsersController < ApplicationController
   def edit
     @end_user = current_end_user
   end
+  
+  def helps
+    @post_images = current_end_user.help_post_images.page(params[:page])
+  end
 
   def update
     @end_user = current_end_user

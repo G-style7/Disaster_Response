@@ -8,6 +8,7 @@ class EndUser < ApplicationRecord
   has_many :post_images, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :helps, dependent: :destroy
+  has_many :help_post_images, through: :helps, source: :post_image
 
   #重複していないemailであるか（一意性、ユニーク (uniqueness)とは、誰かまたは何かが他のものと比較して異なる状態または状態のこと。）
   validates :email, uniqueness: true
