@@ -37,14 +37,15 @@ class EndUser < ApplicationRecord
 
   def self.looks(search, word)
     if search == "perfect_match"
-      @end_user = End_User.where("full_name LIKE?", "#{word}")
+      @end_user = EndUser.where("full_name LIKE?", "#{word}")
     elsif search == "forward_match"
-      @end_user = End_User.where("full_name LIKE?","#{word}%")
+      @end_user = EndUser.where("full_name LIKE?","#{word}%")
     elsif search == "backward_match"
-      @end_user = End_User.where("full_name LIKE?","%#{word}")
+      @end_user = EndUser.where("full_name LIKE?","%#{word}")
     elsif search == "partial_match"
-      @end_user = End_User.where("full_name LIKE?","%#{word}%")
+      @end_user = EndUser.where("full_name LIKE?","%#{word}%")
     else
-      @end_user = End_User.all
+      @end_user = EndUser.all
     end
+  end
 end

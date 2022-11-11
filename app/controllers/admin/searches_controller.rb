@@ -4,9 +4,9 @@ class Admin::SearchesController < ApplicationController
     @range = params[:range]
 
     if @range == "End_User"
-      @users = End_User.looks(params[:search], params[:word])
+      @end_users = EndUser.looks(params[:search], params[:word])
     else
-      @books = Post_Image.looks(params[:search], params[:word])
+      @post_images = PostImage.looks(params[:search], params[:word])
     end
   end
 end

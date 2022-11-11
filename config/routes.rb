@@ -10,6 +10,7 @@ namespace :admin do
 root to: 'homes#top'
 get '/tos' => 'homes#tos' #利用規約
 get '/policy' => 'homes#policy' #プライバシーポリシー
+get '/end_users/helps' => 'end_users#helps' 
 get "search" => "searches#search" #検索機能
 
 resources :post_images ,only:[:index, :show, :destroy]
