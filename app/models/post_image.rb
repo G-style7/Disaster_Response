@@ -25,4 +25,17 @@ class PostImage < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
+  
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @post_image = Post_Image.where("title LIKE?","#{word}")
+    elsif search == "forward_match"
+      @post_image = Post_Image.where("title LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @post_image = Post_Image.where("title LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @post_image = Post_Image.where("title LIKE?","%#{word}%")
+    else
+      @post_image = Post_Image.all
+    end
 end

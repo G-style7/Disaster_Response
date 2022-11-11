@@ -81,11 +81,10 @@
 </div>
 </div>
 
- <div class ="col">
+
   <%= form_with model: [@post_image, @post_comment] do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメント入力", size: "85x5" %>
- </div>
- <div class ="col-8 text-center">
+  <div class ="col col-lg-6">
+    <%= f.text_area :comment, rows: '3', placeholder: "コメント入力", size: "70x7" %>
     <%= f.submit "送信する" %>
   <% end %>
 </div>

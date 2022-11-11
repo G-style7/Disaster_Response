@@ -10,6 +10,7 @@ namespace :admin do
 root to: 'homes#top'
 get '/tos' => 'homes#tos' #利用規約
 get '/policy' => 'homes#policy' #プライバシーポリシー
+get "search" => "searches#search" #検索機能
 
 resources :post_images ,only:[:index, :show, :destroy]
 resources :post_comments ,only:[:destroy]
@@ -34,7 +35,8 @@ get '/end_users/information/edit' => 'end_users#edit' #利用者の登録情報�
 patch 'end_users/information' => 'end_users#update' #利用者の登録情報更新
 get '/end_users/unsubscribe' => 'end_users#unsubscribe' #利用者の退会確認画面
 patch '/end_users/withdraw' => 'end_users#withdraw' #利用者の退会処理(ステータスの更新)
-get '/end_users/helps' => 'end_users#helps'
+get '/end_users/helps' => 'end_users#helps' #help一覧表示
+get "search" => "searches#search" #検索機能
 resources :post_images do
 resource :helps ,only:[:create, :destroy]
 resources :post_comments ,only:[:create, :destroy]
