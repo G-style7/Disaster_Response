@@ -1,33 +1,34 @@
-<div class ="container main">
- <div class ="row toprow mt-5">
-     <table class = "table">
-      <thead>
-       <tr>
-        <th>被害画像</th>
-        <th>投稿日時</th>
-        <th>タイトル</th>
-        <th>災害種別</th>
-        <th>場　所</th>
-       </tr>
-      </thead>
-      <tbody>
-    <% @post_images.each do |post_image| %>
-      <tr>
-       <td>
-        <%= link_to post_image_path(post_image.id) do %> <%#詳細ページへ遷移したい %>
-         <%= image_tag post_image.get_image(300,300) %>
-        <% end %>
-       </td>
-       <td class="align-middle"><%= post_image.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-       <td class="align-middle"><%= post_image.title %></td>
-       <td class="align-middle"><%= post_image.kind %></td>
-       <td class="align-middle"><%= post_image.address %></td>
-      </tr>
+<<div class="card-list-container py-5">
+ <div class="row toprow justify-content-center">
+
+  <% @post_images.each do |post_image| %>
+  <div class="col-8 col-lg-3 mx-5 text-card-container">
+   <div class="card-deck">
+    <div class="card w-50 mx-auto mt-4 shadow-lg">
+      <%= link_to post_image_path(post_image.id) do %>
+        <%= image_tag post_image.get_image(200,200), class: "card-img-top border"; %>
+      <% end %>
+     <div class="card-body">
+      <div style="display: flex;">
+       <div class="d-flex align-items-center">
+        <%= image_tag post_image.end_user.get_profile_image(90,90), class: "rounded-circle"; %>
+       </div>
+        <div style="margin-left: 30px;">
+          <p><i class="fa-sharp fa-solid fa-user"></i> <%= post_image.end_user.nickname %></p>
+          <p><i class="far fa-clock"></i> <%= post_image.updated_at.strftime('%Y/%m/%d/%H:%M') %></p>
+          <p>
+            <%= link_to(post_image_path(post_image.id), class:"text-dark") do %>
+              <strong><i class="fas fa-house-damage"></i><span> <%= post_image.title %></span></strong>
+            <% end %>
+          </p>
+          <span><i class="fas fa-pen"></i> <%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class: "text-dark" %></span>
+        </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
     <% end %>
-      </tbody>
-     </table>
- </div>
- <div class ="pagination">
- <%= paginate @post_images %>
  </div>
 </div>
+  <%= paginate @post_images %>

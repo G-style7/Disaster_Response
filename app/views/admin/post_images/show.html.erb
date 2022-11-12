@@ -1,12 +1,14 @@
-<div class ="container">
-  <div class ="row justify-content-center">
-    <div class ="col mt-3">
-     <p>タイトル：<%= @post_image.title %></p>
+<div class ="container main">
+  <div class ="row toprow ">
+    <div class ="col-8 mt-3 border">
+     <p><i class="fas fa-house-damage"></i> タイトル：<%= @post_image.title %></p>
       <%= image_tag @post_image.get_image(500,500) %>
-     <p>投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+     <p><i class="far fa-clock"></i> <%= @post_image.created_at.strftime('%Y/%m/%d %H:%M') %></p>
      <p>説明：<%= @post_image.introduction %></p>
     </div>
 </div>
+<div class="row mt-5">
+ <div class="col-8 border">
 <h4>詳細場所</h4>
 <script type="text/javascript">
   function initMap() {
@@ -45,21 +47,29 @@
 </style>
 <!--mapの表示-->
 <div id="map"></div>
+</div>
+</div>
 
  <div class ="col">
         <%= link_to "削除", admin_post_image_path(@post_image), method: :delete, data: { confirm: '削除しますか？' } %>
  </div>
 
   <div class ="row justify-content-center">
-    <div class ="col">
-    <p>コメント：<%= @post_image.post_comments.count %>件</p>
-    <% @post_image.post_comments.each do |post_comment| %>
-      <%= post_comment.end_user.nickname %><br>
-      <%= post_comment.created_at.strftime('%Y/%m/%d/%H:%M') %><br>
-      <%= post_comment.comment %><br>
-     <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete, data: { confirm: '削除しますか？' } %><br>
-    <% end %>
+   <div class ="col">
+    <p><i class="fas fa-pen"></i> コメント：<%= @post_image.post_comments.count %>件</p>
+   </div>
   </div>
-  </div>
+   <div class ="row">
+    <div class="col-8">
+      <% @post_image.post_comments.each do |post_comment| %>
+      <div class="col border">
+        <%= post_comment.end_user.nickname %><br>
+        <%= post_comment.created_at.strftime('%Y/%m/%d/%H:%M') %><br>
+        <%= post_comment.comment %><br>
+       <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete, data: { confirm: '削除しますか？' } %><br>
+      </div>
+      <% end %>
+    </div>
+   </div>
 </div>
 

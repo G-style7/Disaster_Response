@@ -1,17 +1,20 @@
+<div class="container main">
+ <div class="row toprow">
+
 <h2>Results index</h2>
 
 <table class="table table-hover table-inverse">
-  <!--検索対象モデルがUserの時 -->
+  <!--検索対象モデルがEnd_Userの時 -->
   <% if @range == "End_User" %>
     <tbody>
       <% @end_users.each do |end_user| %>
         <tr>
-          <td><%= end_user.first_name %></td>
+          <td><%= end_user.address %></td>
         </tr>
       <% end %>
     </tbody>
   <% else %>
-    <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
+    <!--検索対象モデルがEnd_Userではない時(= 検索対象モデルがpost_imageの時) -->
     <tbody>
       <% @post_images.each do |post_image| %>
         <tr>
@@ -22,3 +25,5 @@
     </tbody>
   <% end %>
 </table>
+</div>
+</div>

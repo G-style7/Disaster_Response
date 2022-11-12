@@ -10,6 +10,27 @@ class EndUser < ApplicationRecord
   has_many :helps, dependent: :destroy
   has_many :help_post_images, through: :helps, source: :post_image
   #sourceは元のモデルが何かを示している（help_post_imagesのテーブルはないため。記述ない場合エラーになる）
+  
+  # フォローをした、されたの関係
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  
+  # 一覧画面で使う
+  has_many :followings, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_of_relationships, source: :follower
+  
+  # フォローしたときの処理
+def follow(end_user_id)
+  relationships.create(followed_id: end_user_id)
+end
+# フォローを外すときの処理
+def unfollow(end_user_id)
+  relationships.find_by(followed_id: end_user_id).destroy
+end
+# フォローしているか判定
+def following?(end_user)
+  followings.include?(end_user)
+end
 
   #重複していないemailであるか（一意性、ユニーク (uniqueness)とは、誰かまたは何かが他のものと比較して異なる状態または状態のこと。）
   validates :email, uniqueness: true
@@ -37,13 +58,13 @@ class EndUser < ApplicationRecord
 
   def self.looks(search, word)
     if search == "perfect_match"
-      @end_user = EndUser.where("full_name LIKE?", "#{word}")
+      @end_user = EndUser.where("address LIKE?", "#{word}")
     elsif search == "forward_match"
-      @end_user = EndUser.where("full_name LIKE?","#{word}%")
+      @end_user = EndUser.where("address LIKE?","#{word}%")
     elsif search == "backward_match"
-      @end_user = EndUser.where("full_name LIKE?","%#{word}")
+      @end_user = EndUser.where("address LIKE?","%#{word}")
     elsif search == "partial_match"
-      @end_user = EndUser.where("full_name LIKE?","%#{word}%")
+      @end_user = EndUser.where("address LIKE?","%#{word}%")
     else
       @end_user = EndUser.all
     end
