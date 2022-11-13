@@ -15,6 +15,15 @@
        </div>
         <div style="margin-left: 30px;">
           <p><i class="fa-sharp fa-solid fa-user"></i> <%= post_image.end_user.nickname %></p>
+          <p>
+          <% if current_end_user.present? && post_image.end_user.id != current_end_user.id %> <%# presentはcurrent_end_userがいるかどうか確認している。%>
+           <% if current_end_user.following?(post_image.end_user) %>
+            <%= link_to "フォロー外す",end_user_relationships_path(post_image.end_user.id), method: :delete %>
+           <% else %>
+            <%= link_to "フォローする",end_user_relationships_path(post_image.end_user.id), method: :post %>
+           <% end %>
+          <% end %>
+          </p>
           <p><i class="far fa-clock"></i> <%= post_image.updated_at.strftime('%Y/%m/%d/%H:%M') %></p>
           <p>
             <%= link_to(post_image_path(post_image.id), class:"text-dark") do %>

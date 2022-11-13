@@ -4,7 +4,8 @@
    <p><i class="fas fa-house-damage"></i> タイトル：<%= @post_image.title %></p>
     <%= image_tag @post_image.get_image(300,300) %>
    <p><i class="far fa-clock"></i> 投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d %H:%M') %></p>
-   <p>説明：<%= @post_image.introduction %></p>
+
+   <p class="text-break">説明：<%= @post_image.introduction %></p>
 
     <% if @post_image.helped_by?(current_end_user) %>
    <p>
@@ -72,24 +73,29 @@
  <% end %>
 </div>
 <div class = "row">
-  <div class ="col">
+ <div class ="col">
   <p><i class="fas fa-pen"></i> コメント数：<%= @post_image.post_comments.count %>件</p>
    <% @post_image.post_comments.each do |post_comment| %>
-   <div class="col border">
-    <p><%#= image_tag post_comment.end_user.get_profile_image(100,100) %></p>
+ <div class = "row">
+  <div class ="col  border">
+    <%= image_tag post_comment.end_user.get_profile_image(100,100) %>
     <%= post_comment.end_user.nickname %>
-    <%= post_comment.created_at.strftime('%Y/%m/%d/%H:%M') %><%= post_comment.comment %>
+    <%= post_comment.created_at.strftime('%Y/%m/%d/%H:%M') %> <%= post_comment.comment %>
     <% if post_comment.end_user == current_end_user %>
     <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete %>
-   </div>
     <% end %>
-   <% end %>
   </div>
+ </div>
+   <% end %>
+ </div>
 </div>
+
+<div class ="row">
+ <div class ="col col-lg-6">
    <%= form_with model: [@post_image, @post_comment] do |f| %>
-  <div class ="col col-lg-6">
     <%= f.text_area :comment, rows: '3', placeholder: "コメント入力", size: "70x7" %>
     <%= f.submit "送信する" %>
    <% end %>
-  </div>
+ </div>
+</div>
 </div>

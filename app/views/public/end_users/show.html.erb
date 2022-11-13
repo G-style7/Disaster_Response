@@ -58,6 +58,12 @@
       <%= link_to "helps一覧を見る" ,end_users_helps_path ,class: "btn btn-primary" %>
     </div>
     <div class ="col-2">
+      <%= link_to "フォロー中" ,end_user_followings_path(current_end_user.id) ,class: "btn btn-primary" %>
+    </div>
+    <div class ="col-2">
+      <%= link_to "フォロワー" ,end_user_followers_path(current_end_user.id) ,class: "btn btn-primary" %>
+    </div>
+    <div class ="col-2">
      <% if @end_user == current_end_user %>
       <%= link_to "編集する" ,end_users_information_edit_path(@end_user) ,class: "btn btn-success btn-block " %>
      <% end %>

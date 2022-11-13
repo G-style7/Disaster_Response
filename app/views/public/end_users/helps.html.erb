@@ -1,6 +1,7 @@
 <div class="card-list-container py-5">
  <div class="row toprow justify-content-center">
-
+ 
+<% if @post_images.exists? %>
   <% @post_images.each do |post_image| %>
   <div class="col-8 col-lg-3 mx-5 text-card-container">
    <div class="card-deck">
@@ -14,14 +15,14 @@
         <%= image_tag post_image.end_user.get_profile_image(90,90), class: "rounded-circle"; %>
        </div>
         <div style="margin-left: 30px;">
+         <p><i class="far fa-clock"></i> <%= post_image.updated_at.strftime('%Y/%m/%d/%H:%M') %></p>
           <p class="">
-            <%= link_to(post_image_path(post_image.id), class:"text-dark") do %>
-              <strong><i class="far fa-flag"></i><span> <%= post_image.title %></span></strong>
+            <%= link_to(post_image_path(post_image.id), class: "text-dark") do %>
+              <strong><i class="fas fa-house-damage"></i><span> <%= post_image.title %></span></strong>
             <% end %>
           </p>
-           <p class="card-text">説明：<%= post_image.introduction %></p>
-            <span><i class="fas fa-user"></i><%= post_image.end_user.nickname %> ｜ </span>
-            <span><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class: "text-dark" %></span>
+            <span><i class="fas fa-user"></i><%= post_image.end_user.nickname %></span>
+            <span><i class="fas fa-pen"></i><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class: "text-dark" %></span>
         </div>
       </div>
      </div>
@@ -29,6 +30,9 @@
    </div>
   </div>
   <% end %>
+  <% else %>
+  <p>Helpをしたユーザーはいません</p>
+<% end %>
  </div>
 </div>
   <%= paginate @post_images %>
