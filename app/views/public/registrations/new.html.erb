@@ -1,14 +1,12 @@
-<div class = "container">
-
-<h2 class= "mt-3" >新規登録</h2>
+<div class = "container main">
+ <div class="row toprow">
+<h2 class= "justify-content-center" >新規登録</h2>
+</div>
 
    <%= form_with model: @end_user,url: end_user_registration_path do |f| %>
    <%= render "public/shared/error_messages", resource: resource %>
    <table class="table mt-5">
     <tbody>
-     <tr>
-      <td><%= image_tag @end_user.get_profile_image(100,100) %></td>
-     </tr>
      <tr>
       <td><%= f.label "ニックネーム" %></td>
       <td><%= f.text_field :nickname, autofocus: true, placeholder: "任意のニックネーム", autocomplete: "last_name" %></td>

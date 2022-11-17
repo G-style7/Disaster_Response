@@ -51,16 +51,33 @@
       document.getElementById('post_image_latitude').value = latitude
       document.getElementById('lng').textContent = longitude
       document.getElementById('post_image_longitude').value = longitude
-
+      var geocoder = new google.maps.Geocoder();
+      var latlng = {
+    lat: latitude,
+    lng: longitude,
+  };
+const infowindow = new google.maps.InfoWindow();
+geocodeLatLng(geocoder, map, infowindow,latlng);
+function geocodeLatLng(geocoder, map, infowindow,latlngStr) {
+  const latlng = latlngStr;
+  geocoder
+    .geocode({ location: latlng })
+    .then((response) => {
+      if (response.results[0]) {
+        document.getElementById('post_image_address').value =(response.results[0].formatted_address).substr( 13 );
+      } else {
+        window.alert("No results found");
+      }
+    })
+    .catch((e) => window.alert("Geocoder failed due to: " + e));
+}
       test.lat = latitude
       test.lng = longitude
-
       marker = new google.maps.Marker({
                     position:test,
                     map: map,
                     title: contentString
                    });
-
        marker.addListener('click', function() {
          infowindow.open(map, marker);
        });
