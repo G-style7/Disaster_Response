@@ -38,80 +38,65 @@
      </div>
     </div>
    </div>
-<ul>
-  <li>lat: <span id="lat"></span></li>
-  <li>lng: <span id="lng"></span></li>
-</ul>
-<script type="text/javascript">
-         function initMap() {
-       // latitude,longitudeから位置を特定
-           var test ={lat: <%= @post_image.latitude %>, lng: <%= @post_image.longitude %>};
-           var map = new google.maps.Map(document.getElementById('map'), {
-                     zoom: 15,
-                     center: test
-                     });
-           var transitLayer = new google.maps.TransitLayer();
-           transitLayer.setMap(map);
 
-           var contentString = '住所：<%= @post_image.address %>';
-           var infowindow = new google.maps.InfoWindow({
-             content: contentString
-           });
-       // Map上の指定した位置にピンを挿して表示する
-           var marker = new google.maps.Marker({
+   <script type="text/javascript">
+  function initMap() {
+    // latitude,longitudeから位置を特定marker.sermap()
+       var test ={lat: <%= @post_image.latitude %>, lng: <%= @post_image.longitude %>};
+       var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: test
+        });
+//以下の記述にてマップにマーカー表示される　test map は上記にて定義している
+        var marker = new google.maps.Marker({
                          position:test,
-                         map: map,
-                         title: contentString
+                         map: map
                         });
-             map.addListener('click', (e) => {
-
-             if (marker) {
+ //クリックした場所にマーカーが移動する（marker.setMap(null)によって一瞬削除して再度表示
+    map.addListener('click', (e) => {
+      if (marker) {
         marker.setMap(null)
       }
+
+ //geocoder で緯度経度から住所を導き出す
       var latitude = e.latLng.lat()
       var longitude = e.latLng.lng()
-      document.getElementById('lat').textContent = latitude
-      document.getElementById('post_image_latitude').value = latitude
-      document.getElementById('lng').textContent = longitude
-      document.getElementById('post_image_longitude').value = longitude
       var geocoder = new google.maps.Geocoder();
+
+  //以下から74行目までで、クリックした住所をaddressフォームに表示させている
       var latlng = {
     lat: latitude,
     lng: longitude,
   };
-const infowindow = new google.maps.InfoWindow();
-geocodeLatLng(geocoder, map, infowindow,latlng);
-function geocodeLatLng(geocoder, map, infowindow,latlngStr) {
-  const latlng = latlngStr;
-  geocoder
-    .geocode({ location: latlng })
-    .then((response) => {
-      if (response.results[0]) {
-        document.getElementById('post_image_address').value =(response.results[0].formatted_address).substr( 13 );
-      } else {
-        window.alert("No results found");
+      const infowindow = new google.maps.InfoWindow();
+      geocodeLatLng(geocoder, map, infowindow,latlng);
+      function geocodeLatLng(geocoder, map, infowindow,latlngStr) {
+        const latlng = latlngStr;
+        geocoder
+          .geocode({ location: latlng })
+          .then((response) => {
+            if (response.results[0]) {
+              document.getElementById('post_image_address').value =(response.results[0].formatted_address).substr( 13 );
+            } else {
+              window.alert("No results found");
+            }
+          })
+          .catch((e) => window.alert("Geocoder failed due to: " + e));
       }
-    })
-    .catch((e) => window.alert("Geocoder failed due to: " + e));
-}
       test.lat = latitude
       test.lng = longitude
+
       marker = new google.maps.Marker({
                     position:test,
                     map: map,
-                    title: contentString
                    });
+
        marker.addListener('click', function() {
          infowindow.open(map, marker);
        });
     })
-
-            marker.addListener('click', function() {
-              infowindow.open(map, marker);
-            });
-
-         }
-       </script>
+  }
+</script>
        <script async defer
                      src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%=ENV["GOOGLE_MAP_API"]%>&callback=initMap">
        </script>

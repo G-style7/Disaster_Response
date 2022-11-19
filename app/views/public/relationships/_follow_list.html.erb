@@ -2,19 +2,19 @@
 
 <% if end_users.exists? %>
   <% end_users.each do |end_user| %>
-    <table>
+    <table class="table">
       <thead>
         <tr>
-          <th>name</th>
-          <th></th>
-          <th></th>
+          <th>名前</th>
+          <th>フォロー数</th>
+          <th>フォロワー数</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><%=end_user.full_name %></td>
-          <td>フォロー数: <%= end_user.followings.count %></td>
-          <td>フォロワー数: <%= end_user.followers.count %></td>
+          <td><%= end_user.followings.count %></td>
+          <td><%= end_user.followers.count %></td>
         </tr>
       </tbody>
     </table>

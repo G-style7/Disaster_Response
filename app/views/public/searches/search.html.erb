@@ -1,14 +1,21 @@
 <% if defined? @end_users %>
 <div class="container main">
  <div class="row toprow  justify-content-center">
-<h2>検索結果</h2>
+<h2>（住所）検索結果</h2>
  </div>
 <table class="table table-hover table-inverse">
   <!--検索対象モデルがUserの時 -->
   <% if @range == "End_User" %>
+    <thead>
+        <tr>
+          <th>ニックネーム</th>
+          <th>名前</th>
+        </tr>
+      </thead>
     <tbody>
       <% @end_users.each do |end_user| %>
         <tr>
+          <td><%= end_user.nickname %></td>
           <td><%= end_user.full_name %></td>
         </tr>
       <% end %>
@@ -35,7 +42,7 @@
 <% else %>
 <div class="card-list-container">
  <div class="row toprow  justify-content-center">
-<h2>検索結果</h2>
+<h2>（タイトル）検索結果</h2>
  </div>
 <div class="row">
 

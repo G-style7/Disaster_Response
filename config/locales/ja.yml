@@ -1,4 +1,12 @@
 ja:
+  activerecord:
+    attributes:
+      post_image:
+        kind: "災害種別"
+        title: "タイトル"
+        image: "画像"
+        introduction: "説明文"
+
   date:
     formats:
       default: "%Y/%m/%d"
