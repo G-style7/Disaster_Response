@@ -22,17 +22,23 @@
         padding-bottom: 50px ;
 }
 
-footer { height: 230px; }
+footer {
+  height: 230px;
+}
 
 .main-backimage {
-  background-image: url('../images/DSC_8184.jpg');
+  background-image: url('../images/gazou_with_opacity.png');
   margin-top: 45px;
   width: 100% ;
   height: 250px;
   background-size: cover;
-  font-family: monospace ;
-  opacity: 0.7;
   background-position: center;
+}
+
+.txt {
+
+  color: red;
+
 }
 
   // & > .rgba-image{
