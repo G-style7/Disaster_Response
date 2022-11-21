@@ -1,6 +1,7 @@
 <div class="card-list-container py-5">
  <div class="row toprow justify-content-center" style="height: 500px;">
 
+<% if @post_images.exists? %>
   <% @post_images.each do |post_image| %>
   <div class="col-8 col-lg-3 mx-5 text-card-container">
    <div class="card-deck">
@@ -28,6 +29,9 @@
    </div>
   </div>
     <% end %>
+    <% else %>
+  <p>投稿がありません</p>
+  <% end %>
  </div>
 </div>
   <%= paginate @post_images %>
