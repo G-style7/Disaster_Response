@@ -1,6 +1,5 @@
-<div class="container main">
- <div class="row toprow justify-content-center">
-
+<div class="container main py-5">
+ <div class="row toprow justify-content-center" style="height: 620px;">
 <% if end_users.exists? %>
   <% end_users.each do |end_user| %>
     <table class="table">
@@ -19,9 +18,9 @@
         </tr>
       </tbody>
     </table>
+    <% end %>
+  <% else %>
+    <p>ユーザーはいません</p>
   <% end %>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
-</div>
+ </div>
 </div>
