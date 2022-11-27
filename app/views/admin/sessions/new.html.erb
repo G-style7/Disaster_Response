@@ -1,5 +1,6 @@
-<div class = "container main">
- <div class ="row toprow text-center">
+<div class="session-backimage d-flex align-items-center justify-content-center">
+<div class = "container">
+ <div class ="row toprow text-center" style="height: 720px;">
   <div class ="col mt-3">
    <h2>Log in</h2>
     <%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
@@ -17,6 +18,7 @@
     <% end %>
   </div>
  </div>
+</div>
 </div>
 
 <%#= render "admins/shared/links" %>
