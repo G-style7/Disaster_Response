@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  
+
   def new
     @contact = Contact.new
   end
@@ -45,9 +45,8 @@ class ContactsController < ApplicationController
           .permit(:email,
                   :name,
                   :phone_number,
-                  :subject,
                   :message
                  )
   end
-  
+
 end
