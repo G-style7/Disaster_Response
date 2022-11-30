@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+  before_action :authenticate_end_user!
 
   def new
     @contact = Contact.new
