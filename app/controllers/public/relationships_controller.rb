@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Public::RelationshipsController < ApplicationController
   # フォローするとき
   def create

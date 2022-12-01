@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Public::PostImagesController < ApplicationController
   before_action :authenticate_end_user!
 
@@ -23,8 +25,8 @@ class Public::PostImagesController < ApplicationController
   def show
     @post_image = PostImage.find(params[:id])
     @post_comment = PostComment.new
-    #@latitude =
-    #@longitude =
+    # @latitude =
+    # @longitude =
   end
 
   def destroy
@@ -44,8 +46,7 @@ class Public::PostImagesController < ApplicationController
   end
 
    private
-
-  def post_image_params
-    params.require(:post_image).permit(:title, :kind, :introduction, :address, :latitude, :longitude, :image)
-  end
+     def post_image_params
+       params.require(:post_image).permit(:title, :kind, :introduction, :address, :latitude, :longitude, :image)
+     end
 end

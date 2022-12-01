@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "boot"
 
 require "rails/all"
@@ -15,11 +17,11 @@ module DisasterResponse
     config.i18n.default_locale = :ja
 
     # I18nライブラリに訳文の探索場所を指示する
-    config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.yml').to_s]
+    config.i18n.load_path += Dir[Rails.root.join("config/locales/**/*.yml").to_s]
 
 
 
-    config.time_zone = 'Tokyo'
+    config.time_zone = "Tokyo"
 
     # Configuration for the application, engines, and railties goes here.
     #

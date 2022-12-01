@@ -1,5 +1,6 @@
-class Admin::SearchesController < ApplicationController
+# frozen_string_literal: true
 
+class Admin::SearchesController < ApplicationController
   def search
     @range = params[:range]
 

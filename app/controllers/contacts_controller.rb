@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ContactsController < ApplicationController
   before_action :authenticate_end_user!
 
@@ -40,14 +42,12 @@ class ContactsController < ApplicationController
   end
 
   private
-
-  def contact_params
-    params.require(:contact)
-          .permit(:email,
-                  :name,
-                  :phone_number,
-                  :message
-                 )
-  end
-
+    def contact_params
+      params.require(:contact)
+            .permit(:email,
+                    :name,
+                    :phone_number,
+                    :message
+                   )
+    end
 end

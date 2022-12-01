@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin::PostImagesController < ApplicationController
   def index
     if params[:end_user_id]

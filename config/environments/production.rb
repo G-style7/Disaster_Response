@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
@@ -22,7 +24,7 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
@@ -97,14 +99,14 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.delivery_method = :smtp 
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      port: 587, #ポートがサーバーの出入り口
-      address: 'smtp.gmail.com', #Gmailのメール送信サーバーを示している
-      domain: 'smtp.gmail.com',
-      user_name: ENV['SMTP_USERNAME'], #Gmailログインするための情報
-      password: ENV['SMTP_PASSWORD'],
-      enable_starttls_auto: true #暗号化
+      port: 587, # ポートがサーバーの出入り口
+      address: "smtp.gmail.com", # Gmailのメール送信サーバーを示している
+      domain: "smtp.gmail.com",
+      user_name: ENV["SMTP_USERNAME"], # Gmailログインするための情報
+      password: ENV["SMTP_PASSWORD"],
+      enable_starttls_auto: true # 暗号化
   }
 
   # Inserts middleware to perform automatic connection switching.
