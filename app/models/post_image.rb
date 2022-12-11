@@ -55,5 +55,5 @@ class PostImage < ApplicationRecord
       @post_image = PostImage.all
     end
   end
-  
+
 end
