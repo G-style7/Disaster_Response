@@ -2,6 +2,7 @@
 
 class Public::PostImagesController < ApplicationController
   before_action :authenticate_end_user!
+  before_action :correct_user, only: [:edit, :update]
 
   def new
     @post_image = PostImage.new
@@ -49,4 +50,11 @@ class Public::PostImagesController < ApplicationController
      def post_image_params
        params.require(:post_image).permit(:title, :kind, :introduction, :address, :latitude, :longitude, :image)
      end
+
+     def correct_user
+     @post_image = PostImage.find(params[:id])
+     @end_user = @post_image.end_user #⬆️の投稿をしたUserであると定義
+     redirect_to(post_image_path) unless @end_user == current_end_user
+     #②で定義したend_userと現在ログインしているend_userが一致していなければ、一覧ページにリダイレクトされる
+  end
 end

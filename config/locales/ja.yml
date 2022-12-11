@@ -37,3 +37,28 @@ ja:
         man: "男性"
       　woman: "女性"
       　unanswered: "未回答"
+
+  errors:
+    messages:
+      not_saved: "登録できませんでした。"
+  activerecord:
+    attributes:
+      end_user:
+        email: "メールアドレス"
+        last_name: "名"
+        first_name: "姓"
+        last_name_kana: "セイ"
+        first_name_kana: "メイ"
+        birthday: "生年月日"
+        gender: "性別"
+        nickname: "ニックネーム"
+        postal_code: "郵便番号"
+        address: "住所"
+        telephone_number: "電話番号"
+        email: "メールアドレス"
+        password: "パスワード"
+      post_image:
+        kind: "災害種別"
+        title: "タイトル"
+        image: "画像"
+        introduction: "説明文"

@@ -7,6 +7,7 @@ class PostImage < ApplicationRecord
   # titleなどが存在しているかを確認するバリデーション
   validates :title, :kind, :introduction, :address, :image, presence: true
 
+
   has_one_attached :image
 
   belongs_to :end_user
@@ -28,7 +29,7 @@ class PostImage < ApplicationRecord
     image.variant(resize_to_limit: [width, height]).processed
   end
 
-  def self.looks(search, word)
+  def self.title_looks(search, word)
     if search == "perfect_match"
       @post_image = PostImage.where("title LIKE?", "#{word}")
     elsif search == "forward_match"
@@ -41,4 +42,18 @@ class PostImage < ApplicationRecord
       @post_image = PostImage.all
     end
   end
+  def self.address_looks(search, word)
+    if search == "perfect_match"
+      @post_image = PostImage.where("address LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @post_image = PostImage.where("address LIKE?", "#{word}%")
+    elsif search == "backward_match"
+      @post_image = PostImage.where("address LIKE?", "%#{word}")
+    elsif search == "partial_match"
+      @post_image = PostImage.where("address LIKE?", "%#{word}%")
+    else
+      @post_image = PostImage.all
+    end
+  end
+  
 end

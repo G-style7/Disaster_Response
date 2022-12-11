@@ -58,17 +58,17 @@ class EndUser < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  def self.looks(search, word)
-    if search == "perfect_match"
-      @end_user = EndUser.where("address LIKE?", "#{word}")
-    elsif search == "forward_match"
-      @end_user = EndUser.where("address LIKE?", "#{word}%")
-    elsif search == "backward_match"
-      @end_user = EndUser.where("address LIKE?", "%#{word}")
-    elsif search == "partial_match"
-      @end_user = EndUser.where("address LIKE?", "%#{word}%")
-    else
-      @end_user = EndUser.all
-    end
-  end
+  # def self.looks(search, word)
+  #   if search == "perfect_match"
+  #     @end_user = EndUser.where("address LIKE?", "#{word}")
+  #   elsif search == "forward_match"
+  #     @end_user = EndUser.where("address LIKE?", "#{word}%")
+  #   elsif search == "backward_match"
+  #     @end_user = EndUser.where("address LIKE?", "%#{word}")
+  #   elsif search == "partial_match"
+  #     @end_user = EndUser.where("address LIKE?", "%#{word}%")
+  #   else
+  #     @end_user = EndUser.all
+  #   end
+  # end
 end

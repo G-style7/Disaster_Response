@@ -16,7 +16,7 @@
        </div>
         <div style="margin-left: 30px;">
           <p><i class="far fa-clock"></i> <%= post_image.updated_at.strftime('%Y/%m/%d/%H:%M') %></p>
-          <p class="">
+          <p><i class="far fa-clock"></i> <%= post_image.address %></p>
             <%= link_to(post_image_path(post_image.id), class:"text-dark") do %>
               <strong><i class="fas fa-house-damage"></i><span> <%= post_image.title %></span></strong>
             <% end %>

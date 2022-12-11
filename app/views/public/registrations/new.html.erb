@@ -29,11 +29,11 @@
       <td><%= f.label "性別" %></td>
       <td>
        <%= f.radio_button :gender, "man" %>
-       <%= f.label :gender, "男性" %>
+       <%= f.label :gender, "男性", value: "man" %>
        <%= f.radio_button :gender, "woman" %>
-       <%= f.label :gender, "女性" %>
-       <%= f.radio_button :gender, "unanswered" %>
-       <%= f.label :gender, "未回答" %>
+       <%= f.label :gender, "女性", value: "woman" %>
+       <%= f.radio_button :gender, "other" %>
+       <%= f.label :gender, "未回答", value: "other" %>
       </td>
      </tr>
      <tr>
