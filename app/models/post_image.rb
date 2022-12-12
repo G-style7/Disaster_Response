@@ -7,7 +7,6 @@ class PostImage < ApplicationRecord
   # titleなどが存在しているかを確認するバリデーション
   validates :title, :kind, :introduction, :address, :image, presence: true
 
-
   has_one_attached :image
 
   belongs_to :end_user
