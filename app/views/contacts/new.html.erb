@@ -3,12 +3,12 @@
 <%= form_for(@contact, url: confirm_path) do |f| %>
   <div class="form-group ">
     <%= f.label :name, 'お名前*' %>
-    <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+    <%= f.text_field :name, placeholder: "名前を入力してください", autofocus: true, class: 'form-control' %>
   </div>
 
   <div class="form-group">
     <%= f.label :message, 'メッセージ*' %>
-    <%= f.text_area :message, size: '50x15', class: 'form-control' %>
+    <%= f.text_area :message, placeholder: "メッセージをここに入力してください", size: '50x15', class: 'form-control' %>
   </div>
 
   <div>
