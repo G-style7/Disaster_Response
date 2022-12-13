@@ -13,8 +13,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "homes#top"
-    get "/tos" => "homes#tos" # 利用規約
-    get "/policy" => "homes#policy" # プライバシーポリシー
+
     get "/end_users/helps" => "end_users#helps"
     get "search" => "searches#search" # 検索機能
 
@@ -53,11 +52,15 @@ Rails.application.routes.draw do
      get "followers" => "relationships#followers", as: "followers"
    end
    # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+   get "/tos" => "homes#tos" # 利用規約
+   get "/policy" => "homes#policy" # プライバシーポリシー
  end
+
   resources :contacts, only: [:new, :create]
   post "contacts/confirm", to: "contacts#confirm", as: "confirm"
   post "contacts/back", to: "contacts#back", as: "back"
   get "done", to: "contacts#done", as: "done"
+
 end
 
 # get 'maps/index'
