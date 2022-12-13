@@ -83,7 +83,7 @@
     <%= post_comment.end_user.nickname %>
     <%= post_comment.created_at.strftime('%Y/%m/%d/%H:%M') %> <%= post_comment.comment %>
     <% if post_comment.end_user == current_end_user %>
-    <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete %>
+    <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), data: { confirm: "本当に削除しますか？" }, method: :delete %>
     <% end %>
   </div>
  </div>
